@@ -64,7 +64,6 @@ public class EssentialsPlayerListener implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerRespawn(final PlayerRespawnEvent event) {
         final User user = ess.getUser(event.getPlayer());
-        updateCompass(user);
         user.setDisplayNick();
 
         if (ess.getSettings().isTeleportInvulnerability()) {
@@ -235,7 +234,6 @@ public class EssentialsPlayerListener implements Listener {
                 user.setLastAccountName(user.getBase().getName());
                 user.setLastLogin(currentTime);
                 user.setDisplayNick();
-                updateCompass(user);
 
                 if (!ess.getVanishedPlayersNew().isEmpty() && !user.isAuthorized("essentials.vanish.see")) {
                     for (String p : ess.getVanishedPlayersNew()) {
@@ -579,7 +577,6 @@ public class EssentialsPlayerListener implements Listener {
         final User user = ess.getUser(event.getPlayer());
         final String newWorld = event.getPlayer().getLocation().getWorld().getName();
         user.setDisplayNick();
-        updateCompass(user);
         if (ess.getSettings().getNoGodWorlds().contains(newWorld) && user.isGodModeEnabledRaw()) {
             // Player god mode is never disabled in order to retain it when changing worlds once more.
             // With that said, players will still take damage as per the result of User#isGodModeEnabled()

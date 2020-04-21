@@ -5,6 +5,7 @@ import com.earth2me.essentials.User;
 import com.earth2me.essentials.utils.StringUtil;
 import org.bukkit.Location;
 import org.bukkit.Server;
+import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 import java.util.ArrayList;
@@ -40,14 +41,38 @@ public class Commandhome extends EssentialsCommand {
         }
         try {
             if ("bed".equalsIgnoreCase(homeName) && user.isAuthorized("essentials.home.bed")) {
-                final Location bed = player.getBase().getBedSpawnLocation();
-                if (bed != null) {
-                    user.getTeleport().teleport(bed, charge, TeleportCause.COMMAND);
-                    throw new NoChargeException();
-                } else {
-                    throw new Exception(tl("bedMissing"));
+                try {
+                    Player player2 = player.getBase();
+                    net.minecraft.server.v1_15_R1.WorldServer worldServer = ((org.bukkit.craftbukkit.v1_15_R1.CraftWorld) player.getWorld()).getHandle();
+                    net.minecraft.server.v1_15_R1.EntityPlayer entityPlayer = ((org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer) player.getBase()).getHandle();
+                    if (entityPlayer.getBed() != null) {
+                        worldServer.getChunkProvider().getTickingChunkAsync(entityPlayer.getBed().getX() >> 4, entityPlayer.getBed().getZ() >> 4, (chunk -> {
+                            if (player2.isOnline()) {
+                                Location bedLocation = player2.getBedSpawnLocation();
+                                if (bedLocation != null) {
+                                    try {
+                                        user.getTeleport().teleport(bedLocation, charge, TeleportCause.COMMAND);
+                                    } catch (Exception e) {
+                                    }
+                                } else {
+                                    player2.sendMessage(tl("bedMissing"));
+                                }
+                            }
+                        }));
+                    }
+                } catch (Exception ex) {
+                    //Fallback in-case of jar change, this will keep support
+                    final Location bed = player.getBase().getBedSpawnLocation();
+                    if (bed != null) {
+                        user.getTeleport().teleport(bed, charge, TeleportCause.COMMAND);
+                        throw new NoChargeException();
+                    } else {
+                        throw new Exception(tl("bedMissing"));
+                    }
                 }
+                return;
             }
+            
             goHome(user, player, homeName.toLowerCase(Locale.ENGLISH), charge);
         } catch (NotEnoughArgumentsException e) {
             Location bed = player.getBase().getBedSpawnLocation();

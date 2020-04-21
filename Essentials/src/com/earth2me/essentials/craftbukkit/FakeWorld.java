@@ -4,6 +4,7 @@ import org.bukkit.*;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.boss.DragonBattle;
 import org.bukkit.entity.*;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
@@ -15,12 +16,15 @@ import org.bukkit.util.BoundingBox;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
+import com.destroystokyo.paper.HeightmapType;
+
 import java.io.File;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 
 
@@ -240,11 +244,6 @@ public class FakeWorld implements World {
 
     @Override
     public Location getSpawnLocation() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public boolean setSpawnLocation(Location location) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -867,4 +866,172 @@ public class FakeWorld implements World {
 	public <T> boolean setGameRule(GameRule<T> arg0, T arg1) {
         throw new UnsupportedOperationException("Not supported yet.");
 	}
+
+    @Override
+    public boolean createExplosion(Entity arg0, Location arg1, float arg2, boolean arg3, boolean arg4) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public Biome getBiome(int x, int y, int z) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public CompletableFuture<Chunk> getChunkAtAsync(int arg0, int arg1, boolean arg2) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public int getChunkCount() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public DragonBattle getEnderDragonBattle() { // TODO Auto-generated method stub
+    return null; }
+
+    @Override
+    public Entity getEntity(UUID arg0) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public int getEntityCount() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public Block getHighestBlockAt(Location arg0, HeightMap arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Block getHighestBlockAt(int arg0, int arg1, HeightMap arg2) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public int getHighestBlockYAt(Location arg0, HeightMap arg1) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int getHighestBlockYAt(int arg0, int arg1, HeightmapType arg2) throws UnsupportedOperationException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int getHighestBlockYAt(int arg0, int arg1, HeightMap arg2) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public double getHumidity(int x, int y, int z) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int getNoTickViewDistance() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public int getPlayerCount() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public void setBiome(int x, int y, int z, Biome bio) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public double getTemperature(int x, int y, int z) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int getTickableTileEntityCount() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public long getTicksPerAmbientSpawns() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public long getTicksPerWaterSpawns() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public int getTileEntityCount() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public int getViewDistance() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public boolean isDayTime() { // TODO Auto-generated method stub
+    return false; }
+
+    @Override
+    public boolean isHardcore() { // TODO Auto-generated method stub
+    return false; }
+
+    @Override
+    public void setHardcore(boolean hardcore) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setNoTickViewDistance(int arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public boolean setSpawnLocation(Location location) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void setTicksPerAmbientSpawns(int arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setTicksPerWaterSpawns(int arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setViewDistance(int arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public <T> void spawnParticle(Particle arg0, List<Player> arg1, Player arg2, double arg3, double arg4, double arg5, int arg6, double arg7, double arg8, double arg9, double arg10, T arg11, boolean arg12) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public Spigot spigot() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

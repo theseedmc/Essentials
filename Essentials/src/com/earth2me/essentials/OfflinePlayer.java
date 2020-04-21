@@ -1,6 +1,7 @@
 package com.earth2me.essentials;
 
 import net.ess3.nms.refl.ReflUtil;
+import net.md_5.bungee.api.chat.BaseComponent;
 
 import org.bukkit.*;
 import org.bukkit.advancement.Advancement;
@@ -10,12 +11,16 @@ import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.PistonMoveReaction;
+import org.bukkit.block.Sign;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.conversations.Conversation;
 import org.bukkit.conversations.ConversationAbandonedEvent;
 import org.bukkit.entity.*;
 import org.bukkit.entity.memory.MemoryKey;
+import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent.Reason;
+import org.bukkit.event.player.PlayerResourcePackStatusEvent.Status;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.InventoryView.Property;
@@ -32,6 +37,12 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.util.BoundingBox;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
+
+import com.destroystokyo.paper.Title;
+import com.destroystokyo.paper.block.TargetBlockInfo;
+import com.destroystokyo.paper.block.TargetBlockInfo.FluidMode;
+import com.destroystokyo.paper.entity.TargetEntityInfo;
+import com.destroystokyo.paper.profile.PlayerProfile;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -434,19 +445,6 @@ public class OfflinePlayer implements Player {
     @Override
     public boolean isSleepingIgnored() {
         return true;
-    }
-
-    @Override
-    public void awardAchievement(Achievement a) {
-    }
-
-    @Override
-    public void removeAchievement(Achievement achievement) {
-    }
-
-    @Override
-    public boolean hasAchievement(Achievement achievement) {
-        return false;
     }
 
     @Override
@@ -1653,5 +1651,349 @@ public class OfflinePlayer implements Player {
     @Override
     public PersistentDataContainer getPersistentDataContainer() {
         return null;
+    }
+
+    @Override
+    public void closeInventory(Reason arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void openSign(Sign arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public Entity releaseLeftShoulderEntity() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Entity releaseRightShoulderEntity() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void attack(Entity arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public ItemStack getActiveItem() { // TODO Auto-generated method stub
+    return null; }
+
+    @Override
+    public int getArrowsStuck() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public int getHandRaisedTime() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public int getItemUseRemainingTime() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public int getShieldBlockingDelay() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public Block getTargetBlock(int arg0, FluidMode arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public BlockFace getTargetBlockFace(int arg0, FluidMode arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public TargetBlockInfo getTargetBlockInfo(int arg0, FluidMode arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Entity getTargetEntity(int arg0, boolean arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public TargetEntityInfo getTargetEntityInfo(int arg0, boolean arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean isJumping() { // TODO Auto-generated method stub
+    return false; }
+
+    @Override
+    public void setArrowsStuck(int arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setJumping(boolean arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setKiller(Player arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setShieldBlockingDelay(int arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void swingMainHand() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void swingOffHand() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public boolean fromMobSpawner() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public Chunk getChunk() { // TODO Auto-generated method stub
+    return null; }
+
+    @Override
+    public SpawnReason getEntitySpawnReason() { // TODO Auto-generated method stub
+    return null; }
+
+    @Override
+    public Location getOrigin() { // TODO Auto-generated method stub
+    return null; }
+
+    @Override
+    public long getLastLogin() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public long getLastSeen() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public int getProtocolVersion() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public InetSocketAddress getVirtualHost() { // TODO Auto-generated method stub
+    return null; }
+
+    @Override
+    public int applyMending(int arg0) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public boolean getAffectsSpawning() { // TODO Auto-generated method stub
+    return false; }
+
+    @Override
+    public float getCooldownPeriod() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public float getCooledAttackStrength(float arg0) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int getNoTickViewDistance() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public PlayerProfile getPlayerProfile() { // TODO Auto-generated method stub
+    return null; }
+
+    @Override
+    public String getResourcePackHash() { // TODO Auto-generated method stub
+    return null; }
+
+    @Override
+    public Status getResourcePackStatus() { // TODO Auto-generated method stub
+    return null; }
+
+    @Override
+    public int getViewDistance() { // TODO Auto-generated method stub
+    return 0; }
+
+    @Override
+    public void giveExp(int arg0, boolean arg1) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public boolean hasResourcePack() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void hideTitle() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void resetCooldown() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void sendActionBar(String arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void sendActionBar(char arg0, String arg1) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void sendExperienceChange(float progress) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void sendExperienceChange(float progress, int level) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void sendTitle(Title arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setAffectsSpawning(boolean arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setNoTickViewDistance(int arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setPlayerListHeaderFooter(BaseComponent[] arg0, BaseComponent[] arg1) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setPlayerListHeaderFooter(BaseComponent arg0, BaseComponent arg1) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setPlayerProfile(PlayerProfile arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setResourcePack(String arg0, String arg1) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setSubtitle(BaseComponent[] arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setSubtitle(BaseComponent arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setTitleTimes(int arg0, int arg1, int arg2) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setViewDistance(int arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void showTitle(BaseComponent[] arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void showTitle(BaseComponent arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void showTitle(BaseComponent[] arg0, BaseComponent[] arg1, int arg2, int arg3, int arg4) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void showTitle(BaseComponent arg0, BaseComponent arg1, int arg2, int arg3, int arg4) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public Spigot spigot() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void updateTitle(Title arg0) {
+        // TODO Auto-generated method stub
+        
     }
 }
