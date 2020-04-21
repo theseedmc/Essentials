@@ -75,7 +75,6 @@ public class Commandhome extends EssentialsCommand {
             
             goHome(user, player, homeName.toLowerCase(Locale.ENGLISH), charge);
         } catch (NotEnoughArgumentsException e) {
-            Location bed = player.getBase().getBedSpawnLocation();
             final List<String> homes = player.getHomes();
             if (homes.isEmpty() && player.equals(user)) {
                 if (ess.getSettings().isSpawnIfNoHome()) {
@@ -90,6 +89,17 @@ public class Commandhome extends EssentialsCommand {
             } else {
                 final int count = homes.size();
                 if (user.isAuthorized("essentials.home.bed")) {
+                    Location bed = null;
+                    try {
+                        net.minecraft.server.v1_15_R1.EntityPlayer entityPlayer = ((org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer) player.getBase()).getHandle();
+                        net.minecraft.server.v1_15_R1.BlockPosition bedPos = entityPlayer.getBed();
+                        if (bedPos != null) {
+                            bed = new Location(player.getWorld(), bedPos.getX(), bedPos.getY(), bedPos.getZ());
+                        }
+                    } catch (Exception ex2) {
+                        bed = player.getBase().getBedSpawnLocation();
+                    }
+                    
                     if (bed != null) {
                         homes.add(tl("bed"));
                     } else {
