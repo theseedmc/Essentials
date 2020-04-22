@@ -278,7 +278,18 @@ public class Teleport implements ITeleport {
 
     void respawnNow(IUser teleportee, TeleportCause cause) throws Exception {
         final Player player = teleportee.getBase();
-        Location bed = player.getBedSpawnLocation();
+        
+        Location bed = null;
+        try {
+            net.minecraft.server.v1_15_R1.EntityPlayer entityPlayer = ((org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer) player).getHandle();
+            net.minecraft.server.v1_15_R1.BlockPosition bedPos = entityPlayer.getBed();
+            if (bedPos != null) {
+                bed = new Location(player.getWorld(), bedPos.getX(), bedPos.getY(), bedPos.getZ());
+            }
+        } catch (Exception ex) {
+            bed = player.getBedSpawnLocation();
+        }
+        
         if (bed != null) {
             now(teleportee, new LocationTarget(bed), cause);
         } else {

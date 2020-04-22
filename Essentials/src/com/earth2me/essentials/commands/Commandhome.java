@@ -3,8 +3,11 @@ package com.earth2me.essentials.commands;
 import com.earth2me.essentials.Trade;
 import com.earth2me.essentials.User;
 import com.earth2me.essentials.utils.StringUtil;
+
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Server;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
@@ -94,7 +97,10 @@ public class Commandhome extends EssentialsCommand {
                         net.minecraft.server.v1_15_R1.EntityPlayer entityPlayer = ((org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer) player.getBase()).getHandle();
                         net.minecraft.server.v1_15_R1.BlockPosition bedPos = entityPlayer.getBed();
                         if (bedPos != null) {
-                            bed = new Location(player.getWorld(), bedPos.getX(), bedPos.getY(), bedPos.getZ());
+                            World world = Bukkit.getWorld(entityPlayer.spawnWorld);
+                            if (world != null) {
+                                bed = new Location(world, bedPos.getX(), bedPos.getY(), bedPos.getZ());
+                            }
                         }
                     } catch (Exception ex2) {
                         bed = player.getBase().getBedSpawnLocation();
